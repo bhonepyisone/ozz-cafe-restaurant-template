@@ -80,7 +80,7 @@
     <nav class="bg-surface shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <!-- LOGO: The icon is removed and the image tag is now active. -->
+                <!-- LOGO: This will display your logo. The icon is a fallback if the image is not found. -->
                 <img src="assets/logo/logo.png" alt="Voz Cafe Logo" class="h-8 mr-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <i class="fas fa-utensils text-2xl text-primary mr-2" style="display: none;"></i>
                 <span class="text-xl font-bold">Voz Cafe and Restaurant Template</span>
@@ -189,7 +189,11 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Voz Cafe and Restaurant Template</h3>
+                    <div class="flex items-center mb-4">
+                        <img src="assets/logo/logo.png" alt="Voz Cafe Logo" class="h-8 mr-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <i class="fas fa-utensils text-2xl text-primary mr-2" style="display: none;"></i>
+                        <h3 class="text-xl font-bold">Voz Cafe and Restaurant Template</h3>
+                    </div>
                     <p class="text-gray-400">Premium dining experience with authentic flavors and exceptional service.</p>
                 </div>
                 <div>
