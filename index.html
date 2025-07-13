@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voz Cafe and Restaurant Template</title>
+    <title>Voz Cafe and Restaurant Template - Glassmorphism Theme</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Properties for the new color palette and font */
+        /* Custom Properties for the Glassmorphism theme */
         :root {
-            --color-primary: #8a6f4d; /* Warm Coffee Brown */
-            --color-primary-hover: #735c3f;
-            --color-background-start: #fdfcfb; /* Creamy Coffee Start */
-            --color-background-end: #f3efe9; /* Warm Beige End */
-            --color-surface: #FFFFFF; /* Clean white for cards */
-            --color-text-primary: #3a3a3a; /* Darker Charcoal for better contrast */
-            --color-text-secondary: #6b6b6b;
-            --color-gradient-start: #654f3a; /* Espresso */
-            --color-gradient-end: #a1805a;   /* Latte */
+            --color-primary: #ff8c42; /* Warm Tangerine/Caramel */
+            --color-primary-hover: #e07b39;
+            --color-background-start: #432818; /* Rich Coffee */
+            --color-background-end: #121010; /* Dark Chocolate */
+            --color-surface: rgba(255, 255, 255, 0.1); /* Clear glass effect */
+            --color-text-primary: #f5f5dc; /* Creamy Beige */
+            --color-text-secondary: #a98c78; /* Light Tan */
+            --color-gradient-start: #f5f5dc; /* Creamy Beige to Tangerine */
+            --color-gradient-end: #ff8c42;
             --font-main: 'Inter', sans-serif;
         }
 
-        /* Applying the new font, text color, and gradient background */
+        /* Applying the new font, text color, and vibrant gradient background */
         body {
             font-family: var(--font-main);
             color: var(--color-text-primary);
-            background: linear-gradient(to bottom, var(--color-background-start), var(--color-background-end));
+            background: linear-gradient(to right, var(--color-background-start), var(--color-background-end)); /* Yummy background */
         }
-        
+
+        /* Core Glassmorphism Effect Class */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: 1rem; /* Softer, rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
         /* Class for gradient text on headings */
         .text-gradient {
             background: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
@@ -61,11 +70,11 @@
             opacity: 0;
             transform: translateY(20px);
         }
-        .branch-card:hover {
+        .branch-card:hover, .menu-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
-        .branch-card {
+        .branch-card, .menu-item {
             transition: all 0.3s ease;
         }
         .hero {
@@ -76,47 +85,42 @@
     </style>
 </head>
 <body class="font-sans">
-    <!-- Navigation -->
-    <nav class="bg-surface shadow-md sticky top-0 z-50">
+    <nav class="glass-effect sticky top-0 z-50 m-4">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <!-- LOGO: This will display your logo. The icon is a fallback if the image is not found. -->
                 <img src="assets/logo/logo.png" alt="Voz Cafe Logo" class="h-8 mr-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <i class="fas fa-utensils text-2xl text-primary mr-2" style="display: none;"></i>
-                <span class="text-xl font-bold">Voz Cafe and Restaurant Template</span>
+                <i class="fas fa-utensils text-2xl text-white mr-2" style="display: none;"></i>
+                <span class="text-xl font-bold text-white">Voz Cafe</span>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="hover:text-primary transition">Home</a>
-                <a href="#branches" class="hover:text-primary transition">Our Branches</a>
-                <a href="#popular" class="hover:text-primary transition">Popular Items</a>
-                <a href="#menu" class="hover:text-primary transition">Menu</a>
+            <div class="hidden md:flex space-x-8 text-white">
+                <a href="#home" class="hover:text-gray-200 transition">Home</a>
+                <a href="#branches" class="hover:text-gray-200 transition">Our Branches</a>
+                <a href="#popular" class="hover:text-gray-200 transition">Popular Items</a>
+                <a href="#menu" class="hover:text-gray-200 transition">Menu</a>
             </div>
             <button class="md:hidden" id="mobile-menu-button">
-                <i class="fas fa-bars text-2xl"></i>
+                <i class="fas fa-bars text-2xl text-white"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-surface w-full px-4 py-2 shadow-md" id="mobile-menu">
-            <a href="#home" class="block py-2 hover:text-primary transition">Home</a>
-            <a href="#branches" class="block py-2 hover:text-primary transition">Our Branches</a>
-            <a href="#popular" class="block py-2 hover:text-primary transition">Popular Items</a>
-            <a href="#menu" class="block py-2 hover:text-primary transition">Menu</a>
+        <div class="md:hidden hidden w-full px-4 py-2" id="mobile-menu">
+            <a href="#home" class="block py-2 text-white hover:text-gray-200 transition">Home</a>
+            <a href="#branches" class="block py-2 text-white hover:text-gray-200 transition">Our Branches</a>
+            <a href="#popular" class="block py-2 text-white hover:text-gray-200 transition">Popular Items</a>
+            <a href="#menu" class="block py-2 text-white hover:text-gray-200 transition">Menu</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero text-white py-20 md:py-32 flex items-center">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Experience Culinary Excellence</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Discover our carefully crafted menu featuring the finest ingredients and authentic flavors from around the world.</p>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Discover our carefully crafted menu featuring the finest ingredients and authentic flavors.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#menu" class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-full font-semibold transition">View Menu</a>
-                <a href="#branches" class="bg-white hover:bg-gray-100 text-gray-800 px-8 py-3 rounded-full font-semibold transition">Find a Branch</a>
+                <a href="#branches" class="bg-white hover:bg-gray-200 text-gray-800 px-8 py-3 rounded-full font-semibold transition">Find a Branch</a>
             </div>
         </div>
     </section>
 
-    <!-- Branches Section -->
     <section id="branches" class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -125,14 +129,11 @@
                 <button id="add-branch-btn" class="mt-6 bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-full font-semibold transition">+ Add New Branch</button>
             </div>
 
-            <!-- Branch Cards Container -->
             <div id="branches-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Branch cards will be added here dynamically -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Popular Items Section -->
     <section id="popular" class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -140,26 +141,24 @@
                 <p class="text-secondary max-w-2xl mx-auto">These are the dishes our customers can't get enough of!</p>
             </div>
 
-            <!-- Popular Items -->
             <div id="popular-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Popular items will be added here dynamically -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Video Section -->
     <section id="ambiance" class="py-16">
         <div class="text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gradient">Our Ambiance</h2>
             <p class="text-secondary max-w-2xl mx-auto px-4">Step inside and feel the warmth and comfort of our cafe.</p>
         </div>
-        <video class="w-full h-auto mt-8 rounded-lg shadow-lg" autoplay loop muted playsinline>
-            <source src="assets/video/promo-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <div class="container mx-auto px-4 mt-8">
+             <video class="w-full h-auto rounded-lg shadow-lg" autoplay loop muted playsinline>
+                <source src="assets/video/promo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </section>
 
-    <!-- Full Menu Section -->
     <section id="menu" class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -167,97 +166,91 @@
                 <p class="text-secondary max-w-2xl mx-auto">Explore our diverse selection of culinary delights.</p>
             </div>
 
-            <!-- Menu Categories -->
             <div class="flex flex-wrap justify-center mb-8 gap-2">
                 <button class="menu-category-btn active px-4 py-2 bg-primary text-white rounded-full" data-category="all">All Items</button>
-                <button class="menu-category-btn px-4 py-2 bg-gray-200 hover:bg-primary hover:text-white rounded-full transition" data-category="breakfast">Breakfast</button>
-                <button class="menu-category-btn px-4 py-2 bg-gray-200 hover:bg-primary hover:text-white rounded-full transition" data-category="lunch">Lunch</button>
-                <button class="menu-category-btn px-4 py-2 bg-gray-200 hover:bg-primary hover:text-white rounded-full transition" data-category="dinner">Dinner</button>
-                <button class="menu-category-btn px-4 py-2 bg-gray-200 hover:bg-primary hover:text-white rounded-full transition" data-category="desserts">Desserts</button>
-                <button class="menu-category-btn px-4 py-2 bg-gray-200 hover:bg-primary hover:text-white rounded-full transition" data-category="drinks">Drinks</button>
+                <button class="menu-category-btn px-4 py-2 bg-surface text-white hover:bg-primary rounded-full transition" data-category="breakfast">Breakfast</button>
+                <button class="menu-category-btn px-4 py-2 bg-surface text-white hover:bg-primary rounded-full transition" data-category="lunch">Lunch</button>
+                <button class="menu-category-btn px-4 py-2 bg-surface text-white hover:bg-primary rounded-full transition" data-category="dinner">Dinner</button>
+                <button class="menu-category-btn px-4 py-2 bg-surface text-white hover:bg-primary rounded-full transition" data-category="desserts">Desserts</button>
+                <button class="menu-category-btn px-4 py-2 bg-surface text-white hover:bg-primary rounded-full transition" data-category="drinks">Drinks</button>
             </div>
 
-            <!-- Menu Items -->
             <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Menu items will be added here dynamically -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-black bg-opacity-30 text-white py-12 mt-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="assets/logo/logo.png" alt="Voz Cafe Logo" class="h-8 mr-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <i class="fas fa-utensils text-2xl text-primary mr-2" style="display: none;"></i>
-                        <h3 class="text-xl font-bold">Voz Cafe and Restaurant Template</h3>
+                        <i class="fas fa-utensils text-2xl text-primary mr-2"></i>
+                        <h3 class="text-xl font-bold">Voz Cafe</h3>
                     </div>
-                    <p class="text-gray-400">Premium dining experience with authentic flavors and exceptional service.</p>
+                    <p class="text-gray-300">A premium dining experience with a modern touch.</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#branches" class="text-gray-400 hover:text-white transition">Our Branches</a></li>
-                        <li><a href="#popular" class="text-gray-400 hover:text-white transition">Popular Items</a></li>
-                        <li><a href="#menu" class="text-gray-400 hover:text-white transition">Full Menu</a></li>
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#branches" class="text-gray-300 hover:text-white transition">Our Branches</a></li>
+                        <li><a href="#popular" class="text-gray-300 hover:text-white transition">Popular Items</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-white transition">Full Menu</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-                    <p class="text-gray-400 mb-2"><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</p>
-                    <p class="text-gray-400 mb-2"><i class="fas fa-envelope mr-2"></i> info@vozcafe.com</p>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-phone mr-2 text-primary"></i> +1 (555) 123-4567</p>
+                    <p class="text-gray-300 mb-2"><i class="fas fa-envelope mr-2 text-primary"></i> info@vozcafe.com</p>
                     <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-line"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition"><i class="fab fa-line"></i></a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; <span id="copyright-year"></span> Voz Cafe and Restaurant Template. All rights reserved.</p>
+                <p>© <span id="copyright-year"></span> Voz Cafe and Restaurant Template. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Add Branch Modal -->
-    <div id="add-branch-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-surface rounded-lg p-6 w-full max-w-md shadow-xl">
+    <div id="add-branch-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="glass-effect p-6 w-full max-w-md">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold">Add New Branch</h3>
-                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                <h3 class="text-xl font-bold text-white">Add New Branch</h3>
+                <button id="close-modal" class="text-gray-300 hover:text-white">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <form id="branch-form" class="space-y-4">
                 <div>
                     <label for="branch-name" class="block text-secondary mb-2">Branch Name</label>
-                    <input type="text" id="branch-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" required>
+                    <input type="text" id="branch-name" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" required>
                 </div>
                 <div>
                     <label for="branch-address" class="block text-secondary mb-2">Address</label>
-                    <input type="text" id="branch-address" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" required>
+                    <input type="text" id="branch-address" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" required>
                 </div>
                 <div>
                     <label for="branch-phone" class="block text-secondary mb-2">Phone Number</label>
-                    <input type="tel" id="branch-phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" required>
+                    <input type="tel" id="branch-phone" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" required>
                 </div>
                 <div>
-                    <label for="branch-image" class="block text-secondary mb-2">Image URL (e.g., assets/branches/new-branch.jpg)</label>
-                    <input type="text" id="branch-image" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" placeholder="assets/branches/image.jpg" required>
+                    <label for="branch-image" class="block text-secondary mb-2">Image URL</label>
+                    <input type="text" id="branch-image" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" placeholder="assets/branches/image.jpg" required>
                 </div>
                 <div>
                     <label for="branch-grabfood" class="block text-secondary mb-2">Grabfood Link</label>
-                    <input type="url" id="branch-grabfood" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" required>
+                    <input type="url" id="branch-grabfood" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" required>
                 </div>
                 <div>
                     <label for="branch-location" class="block text-secondary mb-2">Google Maps Link</label>
-                    <input type="url" id="branch-location" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ring-primary" required>
+                    <input type="url" id="branch-location" class="w-full px-4 py-2 border-0 rounded-lg bg-white bg-opacity-20 text-white focus:outline-none focus:ring-2 ring-primary" required>
                 </div>
                 <div class="flex justify-end space-x-4">
-                    <button type="button" id="cancel-add" class="px-4 py-2 border rounded-lg hover:bg-gray-100 transition">Cancel</button>
+                    <button type="button" id="cancel-add" class="px-4 py-2 border border-gray-400 rounded-lg hover:bg-gray-700 transition">Cancel</button>
                     <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition">Add Branch</button>
                 </div>
             </form>
@@ -279,32 +272,33 @@
         ];
 
         const menuItems = [
-            { id: 1, name: "Avocado Toast", description: "Sourdough bread, smashed avocado, cherry tomatoes, poached eggs.", price: "$12.99", category: "breakfast", image: "assets/menu/avocado-toast.jpg" },
-            { id: 2, name: "Pancake Stack", description: "Fluffy buttermilk pancakes with maple syrup and fresh berries.", price: "$10.99", category: "breakfast", image: "assets/menu/pancake-stack.jpg" },
-            { id: 3, name: "Caesar Salad", description: "Romaine lettuce, croutons, parmesan cheese with classic Caesar dressing.", price: "$9.99", category: "lunch", image: "assets/menu/caesar-salad.jpg" },
-            { id: 4, name: "Beef Burger", description: "Angus beef patty with cheddar, lettuce, tomato, and special sauce.", price: "$14.99", category: "lunch", image: "assets/menu/beef-burger.jpg" },
-            { id: 5, name: "Grilled Salmon", description: "Fresh Atlantic salmon with lemon butter sauce and seasonal vegetables.", price: "$22.99", category: "dinner", image: "assets/menu/grilled-salmon.jpg" },
-            { id: 6, name: "Pasta Carbonara", description: "Spaghetti with creamy egg sauce, pancetta, and parmesan.", price: "$16.99", category: "dinner", image: "assets/menu/pasta-carbonara.jpg" },
-            { id: 7, name: "Tiramisu", description: "Classic Italian dessert with layers of coffee-soaked ladyfingers.", price: "$8.99", category: "desserts", image: "assets/menu/tiramisu.jpg" },
-            { id: 8, name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center, served with vanilla ice cream.", price: "$9.99", category: "desserts", image: "assets/menu/chocolate-lava-cake.jpg" },
+            { id: 1, name: "Avocado Toast", description: "Sourdough, smashed avocado, cherry tomatoes, poached eggs.", price: "$12.99", category: "breakfast", image: "assets/menu/avocado-toast.jpg" },
+            { id: 2, name: "Pancake Stack", description: "Buttermilk pancakes with maple syrup and fresh berries.", price: "$10.99", category: "breakfast", image: "assets/menu/pancake-stack.jpg" },
+            { id: 3, name: "Caesar Salad", description: "Romaine lettuce, croutons, parmesan cheese, Caesar dressing.", price: "$9.99", category: "lunch", image: "assets/menu/caesar-salad.jpg" },
+            { id: 4, name: "Beef Burger", description: "Angus beef patty with cheddar, lettuce, tomato, special sauce.", price: "$14.99", category: "lunch", image: "assets/menu/beef-burger.jpg" },
+            { id: 5, name: "Grilled Salmon", description: "Atlantic salmon with lemon butter sauce and seasonal vegetables.", price: "$22.99", category: "dinner", image: "assets/menu/grilled-salmon.jpg" },
+            { id: 6, name: "Pasta Carbonara", description: "Spaghetti with creamy egg sauce, pancetta, parmesan.", price: "$16.99", category: "dinner", image: "assets/menu/pasta-carbonara.jpg" },
+            { id: 7, name: "Tiramisu", description: "Classic Italian dessert with coffee-soaked ladyfingers.", price: "$8.99", category: "desserts", image: "assets/menu/tiramisu.jpg" },
+            { id: 8, name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center and ice cream.", price: "$9.99", category: "desserts", image: "assets/menu/chocolate-lava-cake.jpg" },
             { id: 9, name: "Iced Latte", description: "Espresso with chilled milk over ice.", price: "$4.99", category: "drinks", image: "assets/menu/iced-latte.jpg" },
             { id: 10, name: "Fresh Orange Juice", description: "Freshly squeezed orange juice.", price: "$5.99", category: "drinks", image: "assets/menu/fresh-orange-juice.jpg" }
         ];
 
         const popularItems = [ menuItems[0], menuItems[3], menuItems[4], menuItems[6] ];
 
-        // --- RENDER FUNCTIONS ---
+        // --- RENDER FUNCTIONS (Updated for Glassmorphism) ---
         function renderBranches() {
             const branchesContainer = document.getElementById('branches-container');
             branchesContainer.innerHTML = '';
             
             branches.forEach(branch => {
                 const branchCard = document.createElement('div');
-                branchCard.className = 'branch-card bg-surface rounded-lg overflow-hidden shadow-md';
+                // Use glass-effect class, remove old bg and shadow classes
+                branchCard.className = 'branch-card glass-effect overflow-hidden';
                 branchCard.innerHTML = `
                     <img src="${branch.image}" alt="${branch.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFF/333?text=Image+Not+Found';">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${branch.name}</h3>
+                        <h3 class="text-xl font-bold mb-2 text-white">${branch.name}</h3>
                         <p class="text-secondary mb-4"><i class="fas fa-map-marker-alt text-primary mr-2"></i>${branch.address}</p>
                         <p class="text-secondary mb-4"><i class="fas fa-phone text-primary mr-2"></i>${branch.phone}</p>
                         <div class="flex flex-col sm:flex-row gap-3">
@@ -315,7 +309,7 @@
                                 <i class="fas fa-map-marked-alt mr-2"></i> Get Location
                             </a>
                         </div>
-                        <button class="mt-4 text-red-500 hover:text-red-700 transition delete-branch" data-id="${branch.id}">
+                        <button class="mt-4 text-red-400 hover:text-red-600 transition delete-branch" data-id="${branch.id}">
                             <i class="fas fa-trash mr-1"></i> Remove Branch
                         </button>
                     </div>
@@ -340,13 +334,14 @@
             
             filteredItems.forEach(item => {
                 const menuItem = document.createElement('div');
-                menuItem.className = 'menu-item bg-surface rounded-lg overflow-hidden shadow-md relative';
+                 // Use glass-effect class
+                menuItem.className = 'menu-item glass-effect overflow-hidden relative';
                 menuItem.innerHTML = `
                     <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFF/333?text=Image+Not+Found';">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold mb-1">${item.name}</h3>
+                        <h3 class="text-xl font-bold mb-1 text-white">${item.name}</h3>
                         <p class="text-secondary text-sm mb-2">${item.description}</p>
-                        <p class="text-primary font-bold">${item.price}</p>
+                        <p class="font-bold text-lg" style="color: var(--color-primary);">${item.price}</p>
                     </div>
                     <div class="menu-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0">
                         <span class="text-white text-lg font-semibold">${item.price}</span>
@@ -362,13 +357,14 @@
             
             popularItems.forEach(item => {
                 const popularItem = document.createElement('div');
-                popularItem.className = 'bg-surface rounded-lg overflow-hidden shadow-md';
+                // Use glass-effect class
+                popularItem.className = 'glass-effect overflow-hidden';
                 popularItem.innerHTML = `
                     <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFF/333?text=Image+Not+Found';">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold mb-1">${item.name}</h3>
+                        <h3 class="text-xl font-bold mb-1 text-white">${item.name}</h3>
                         <p class="text-secondary text-sm mb-2">${item.description}</p>
-                        <p class="text-primary font-bold">${item.price}</p>
+                        <p class="font-bold text-lg" style="color: var(--color-primary);">${item.price}</p>
                     </div>
                 `;
                 popularContainer.appendChild(popularItem);
@@ -414,12 +410,12 @@
             document.querySelectorAll('.menu-category-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     document.querySelectorAll('.menu-category-btn').forEach(btn => {
-                        btn.classList.remove('active', 'bg-primary', 'text-white');
-                        btn.classList.add('bg-gray-200');
+                        btn.classList.remove('active', 'bg-primary');
+                        btn.classList.add('bg-surface');
                     });
                     
-                    this.classList.add('active', 'bg-primary', 'text-white');
-                    this.classList.remove('bg-gray-200');
+                    this.classList.add('active', 'bg-primary');
+                    this.classList.remove('bg-surface');
                     
                     renderMenuItems(this.getAttribute('data-category'));
                 });
